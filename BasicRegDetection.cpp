@@ -1,6 +1,22 @@
+/*
+                                         Basic Registery based detection unit:
+        Created for Epsilon Anti-Virus v.1.0, all this does is to remove non-persistent and non-rootkit Malwares
+        from the system, works very well. Do keep in mind changing locations of registeries and other location's
+        can result in false-postive results thus destroying vital pieces of Software from system. 
+        
+        Created by SpaceWorm, Cplusplus Forum. 
+        Feel free to PM me regarding queries and help related to this or programming.
+        Profile Link: http://www.cplusplus.com/user/SpaceWorm/
+        
+        Thanks!
+*/
+
 #include <Windows.h>
 #include <Aclapi.h>
 
+/* SetFilePrivileges() 
+   if successful - return TRUE  if unsuccessful - return FALSE
+*/
 bool SetFilePrivileges(wchar_t* w_FilePath, DWORD dwSetFilePermissions,bool bKillOrNot) {
         if ( w_FilePath == 0 || lstrlenW(w_FilePath) < 1 )
                 return false;
@@ -25,7 +41,7 @@ bool SetFilePrivileges(wchar_t* w_FilePath, DWORD dwSetFilePermissions,bool bKil
         return true;
 }
  
-int main()
+int BasicRegCheckUp()
 {
         wchar_t w_mzMalware[260];
         wchar_t m_wszUsers[260];
